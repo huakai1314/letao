@@ -1,12 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>项目：乐淘</title>
+    <!-- 引入bootstrap 框架 -->
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+    <!-- 引入表单验证的css样式 -->
+    <link rel="stylesheet" href="lib/bootstrap-validator/css/bootstrapValidator.css">
+    <!-- 进度条插件 -->
+    <link rel="stylesheet" href="lib/nprogress/nprogress.css">
+    <!-- 引入css样式 -->
+    <link rel="stylesheet" href="css/common.css">
 </head>
+<!-- 给body提那家背景颜色 -->
 <body>
-  <h1>pc端首页</h1>
+    <!-- 左边部分 -->
+    <div class="lt_aside">
+       <!-- 标题的部分 -->
+       <div class="brand">
+         <a href="index.html">电端乐淘</a>
+       </div>
+       <!-- 头像和昵称 -->
+       <div class="user">
+         <img src="images/default.jpg" alt="">
+         <p>超级管理员</p>
+       </div>
+       <!-- 列表部分 -->
+       <div class="nav">
+         <ul>
+           <li>
+              <a href="user.html">
+                <span class="glyphicon glyphicon-user"></span>
+                <span>用户管理</span>
+              </a>
+            </li>
+           <li>
+             <a href="javascript:;">
+               <span class="glyphicon glyphicon-list"></span>
+               <span>分类管理</span>
+             </a>
+           </li>
+           <li>
+             <a href="product.html">
+               <span class="glyphicon glyphicon-tags"></span>
+               <span>商品管理</span>
+             </a>
+          </li>
+         </ul>
+       </div>
+    </div>
+    <!-- 右边部分 -->
+    <div class="lt_main">
+      <!-- 头部部分 -->
+      <div class="lt_header">
+          <div class="pull-left">
+            <a href="javascript:;">
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </a>
+          </div>
+          <div class="pull-right">
+            <a href="javascript:;">
+                <span class="glyphicon glyphicon glyphicon-log-out"></span>
+            </a>
+          </div>
+      </div>
+      <!-- 面包屑导航 -->
+      <div class="container-fluid">
+          <ol class="breadcrumb">
+              <li><a href="#">系统管理</a></li>
+              <li class="active">首页</li>
+            </ol>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 引入jquery -->
+    <script src="lib/jquery/jquery.js"></script>
+    <!-- 引入bootstrap -->
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <!-- 引入表单验证的插件 -->
+    <script src="lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+    <!-- 进度条的插件 进度条是每个页面只要是发送了ajax请求的时候的都会有的所以将进度条的js文件新建一个公共文件 之后的页面之间的引入就可以了 -->
+    <script src="lib/nprogress/nprogress.js"></script>
+    <!--  nprogress公共代码处理文件  -->
+    <script src="js/common.js"></script>
+    <!-- 引入login js -->
+    <script src="js/login.js"></script>
 </body>
 </html>

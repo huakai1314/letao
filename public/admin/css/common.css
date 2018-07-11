@@ -5,3 +5,88 @@
 .mt_200{
     margin-top: 200px;
 }
+/* 取消a连接的所有的默认的样式 */
+a:link,
+a:visited,
+a:hover,
+a:active{
+    text-decoration: none;
+}
+/* 取出列表前面的点 */
+ul,ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+/* 注意：高 */
+html,body{
+    height: 100%;
+}
+
+body{
+    padding-left: 180px;
+}
+/* 首页代码 */
+.lt_aside{
+   width: 180px;
+   height: 100%;
+   background-color: #222d32;
+   position: absolute;
+   left: 0;
+   top: 0;
+}
+/* 标题的部分 */
+.brand a{
+    display: block;
+    width: 180px;
+    height: 50px;
+    line-height: 50px;
+    text-align:center;
+    font-size: 24px;
+    background-color: #367fa9;
+    color: #fff;
+
+}
+/* 头像和昵称 */
+.user img{
+    display: block;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: 50px auto 0px;
+}
+.user p{
+    color: #fff;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+}
+/* 导航列表部分 */
+.nav ul li a{
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    padding-left: 50px;
+}
+/* 右半部分 */
+.lt_main{
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+}
+.lt_header{
+    height: 20px;
+    padding: 0px 20px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #3c8dbc;
+    margin-bottom: 20px;
+
+}
+.lt_header a{
+    color: #fff;
+    font-size: 15px;
+}
