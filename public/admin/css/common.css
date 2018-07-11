@@ -26,6 +26,12 @@ html,body{
 
 body{
     padding-left: 180px;
+    transition: all 1s;
+    
+}
+body.active{
+    padding-left: 0px;
+   
 }
 /* 首页代码 */
 .lt_aside{
@@ -35,6 +41,10 @@ body{
    position: absolute;
    left: 0;
    top: 0;
+   transition: all 1s;
+}
+.lt_aside.active{
+    left: -180px;
 }
 /* 标题的部分 */
 .brand a{
@@ -90,3 +100,9 @@ body{
     color: #fff;
     font-size: 15px;
 }
+.lt_aside .second a{
+    padding-left: 70px;
+}
+
+/* 退出弹出框 */
+

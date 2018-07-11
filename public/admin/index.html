@@ -41,6 +41,10 @@
                <span class="glyphicon glyphicon-list"></span>
                <span>分类管理</span>
              </a>
+             <div class="second" style="display: none;">
+                <a href="first.html">一级分类</a>
+                <a href="second.html">二级分类</a>
+             </div>
            </li>
            <li>
              <a href="product.html">
@@ -54,36 +58,55 @@
     <!-- 右边部分 -->
     <div class="lt_main">
       <!-- 头部部分 -->
-      <div class="lt_header">
-          <div class="pull-left">
-            <a href="javascript:;">
+      <div class="lt_header">  
+            <a href="javascript:;" class="pull-left icon_menu">
                 <span class="glyphicon glyphicon-align-justify"></span>
             </a>
-          </div>
-          <div class="pull-right">
-            <a href="javascript:;">
+            <a href="javascript:;" class="pull-right icon_logout">
                 <span class="glyphicon glyphicon glyphicon-log-out"></span>
             </a>
-          </div>
       </div>
       <!-- 面包屑导航 -->
       <div class="container-fluid">
           <ol class="breadcrumb">
               <li><a href="#">系统管理</a></li>
               <li class="active">首页</li>
-            </ol>
+          </ol>
+          <!-- 每个页面的具体的内容 -->
+          <div class="lt_content">
+
+          </div>
       </div>
     </div>
 
+    <!-- 退出框 -->
+    <!-- 模态框一般都是固定定位的所以一般不会吧它放进去一个盒子里面的 -->
+    <!-- 
+        模态框的显示需要调用
+           $('#myModal').modal('show')
+           $('#myModal').modal('hide')
+           $('#logoutModal').modal('toggle')
 
-
-
-
-
-
-
-
-
+        调节模态框的大小：实例->动态实例->可选的尺寸 模态框有两个可选的尺寸
+            
+     -->
+    <div class="modal fade" id="logoutModal">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">温馨提示</h4>
+          </div>
+          <div class="modal-body text-danger">
+            <p><span class="glyphicon glyphicon-info-sign"></span>你确定要退出后台系统吗？</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary btn_logout">退出</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 
 

@@ -24,3 +24,51 @@ $(document).ajaxStart(function(){
 $(document).ajaxStart(function(){
     NProgress.done();
 })
+
+
+//二级菜单的显示与隐藏
+//点击a连接 让二级菜单显示与隐藏
+$('.second').prev().click(function(){
+    // $(.second).next().toggle(); 会同时触发所有含有.second 类名的样式 后期添加代码的时候不能复用
+    $(this).next().slideToggle();
+})
+
+//左侧边的显示与隐藏
+// 给左边的小图标 添加类注册点击事件
+$('.icon_menu').on('click',function(){
+    $('.lt_aside').toggleClass('active');
+    $('body').toggleClass('active');
+})
+
+// 退出的功能
+// $('.glyphicon-log-out').click(function(){
+//     console.log(111);
+// })
+
+$('.icon_logout').on('click',function(){
+    $("#logoutModal").modal('show');
+})
+
+// 给模态框的确定按钮注册一个点击事件 退出登录
+$('.btn_logout').on('click',function(){
+    //先发送ajax请求 告诉服务器我要对出登录 
+    //服务器给你响应并且告诉你响应成功了 再跳转到login页面
+   $.ajax({
+       type:"get",
+       url:"/employee/employeeLogout",
+    //此时的提交时没有参数的
+    success:function(info){
+        // console.log(info.success)
+        //如果执行成功就条状到index.html页面
+        if(info.success){
+            location.href = "index.html"
+        }
+
+    }
+   })
+// //此时的提交时没有参数的 所以请求也可以这么的去写
+//    $.get('/employee/employeeLogout',function(info){
+//        console.log(info);
+//    })
+
+})
