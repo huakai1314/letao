@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+    <!-- 引入css文件 -->
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+    <!-- <div class="contr"> -->
+        <!-- 内容板块->左边 -->
+        <div class="comm_lt">
+           <!-- banr 头部标题部分 -->
+           <div class="banr">
+               <a href="index.html">电商乐淘</a>
+           </div>
+           <!-- user 用户头像和昵称部分 -->
+           <div class="user">
+               <img src="images/default.jpg" alt="">
+               <p>超级管理员</p>
+           </div>
+           <!-- nav 其他页面的导航部分 -->
+           <div class="nav">
+                <ul>
+                    <li>
+                        <a href="user.html">
+                           <span class="glyphicon glyphicon-user"></span>
+                           <span>用户管理员</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                           <span class="glyphicon glyphicon-list"></span>
+                           <span>用户管理员</span>
+                        </a>
+                        <div class="second" style="display: none;">
+                           <ul>
+                               <li><a href="first.html">一级分类</a></li>
+                               <li><a href="second.html">二级分类</a></li>
+                           </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="product.html">
+                           <span class="glyphicon glyphicon-tags"></span>
+                           <span>用户管理员</span>
+                        </a>
+                    </li>
+                </ul>
+           </div>
+        </div>
+        <!-- 内容板块->右边 -->
+        <div class="comm_lr">
+            <!-- lt_topbar 上半部分-->
+            <div class="lt_topbar">
+                <a href="javascript:;" class="pull-left icon_menu"><span class="glyphicon glyphicon-align-justify"></span></a>
+                <a href="javascript:;" class="pull-right icon_logout"><span class="glyphicon glyphicon-log-out"></span></a>
+            </div>
+            <!-- container-fluid 每一页的内容部分-->
+            <div class="container-fluid">
+                <!-- 面包屑部分 -->
+                <ol class="breadcrumb">
+                    <li><a href="#">管理系统</a></li>
+                    <li class="active">首页</li>
+                </ol>
+                <!-- 每个页面都不同的内容部分 -->
+                <div class="lt_content"></div>
+            </div>
+        </div>
+    <!-- </div>     -->
+    
+    <!-- 退出登录部分 -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">温馨提示</h4>
+                </div>
+                <div class="modal-body text-danger">
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                    <span>您确定要退出后台管理系统吗？</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="logout">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 引入文件 -->
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script src="js/common.js"></script>
+</body>
+</html>

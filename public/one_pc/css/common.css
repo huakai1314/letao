@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* a标签的默认的样式 */
+a:link,
+a:visited,
+a:hover,
+a:active{
+    text-decoration: none;
+}
+/* 取消小圆点 */
+ul,ol{
+    list-style: none;
+}
+.by_bg{
+    background-color: #222d32;
+}
+a{
+    display: block;
+}
+.mt_260{
+     margin-top: 260px;
+}
+body,html{
+    height: 100%;
+}
+/* body设置为了把右边的div挤到右边去
+   左边的div给他浮动让他脱标
+*/
+body{
+    padding-left: 180px;
+    transition: all 1s;
+}
+/* 当条件都满足的时候 */
+body.active{
+    padding-left: 0px;
+
+}
+/* 左边 */
+.comm_lt{
+   width: 180px;
+   height: 100%;
+   background-color: #222d32;
+   position: absolute;
+   left: 0;
+   top: 0;
+   transition: all 1s;
+}
+.comm_lt.active{
+    left: -180px;
+}
+.banr a{
+    width: 100%;
+    height: 50px;
+    background-color: #367fa9;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+}
+.user img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: block;
+    margin: 40px auto 15px;
+}
+.user p{
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+}
+/* nav 部分 */
+.comm_lt .nav{
+    margin-top: 35px;
+}
+.comm_lt .nav a{
+   color:#fff;
+   height: 40px;
+   line-height: 40px;
+   text-align: center;
+}
+/* 内容板块--右边部分 */
+.comm_lr{
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    
+}
+.lt_topbar{
+    background-color: #3c8dbc;
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    padding: 0px 20px;
+}
+.lt_topbar a{
+    color: #fff;
+    font-size: 18px;
+}
+/* 内容板块的右边的下半部分 */
+.container-fluid{
+    padding: 20px 15px;
+}
