@@ -74,6 +74,8 @@
           </ol>
           <!-- 每个页面的具体的内容 -->
           <div class="lt_content">
+            <!-- 添加按钮 使用bootstrap的按钮适配样式 -->
+            <button type="button" class="btn btn-default mb_20 btn-add">添加分类</button>
               <table class="table table-striped table-bordered">
                   <thead>
                      <tr>
@@ -82,29 +84,45 @@
                      </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>户外管</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>户外管</td>
-                      </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>户外管</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>户外管</td>
-                      </tr>
+                     <!-- 表格动态渲染部分 -->
                   </tbody>
               </table>
               <!-- 分頁部分 -->
-              <ul id="paginator"></ul>
+              <div class="pull-right">
+                  <ul id="paginator"></ul>
+              </div>
           </div>
       </div>
     </div>
+  
+   <!-- 添加分类的模态框 -->
+   <div class="modal fade" id="addModal">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">添加分类</h4>
+          </div>
+          <form>
+          <div class="modal-body text-danger">
+            <!-- 问题：如果form 放在里面的话 按钮点击的时候是没有办法和form里面的内容衔接的 将form放在大div的外面把
+                       输入框和按钮两个部分都包含在内
+            -->
+                  <div class="form-group">
+                    <input type="text" name="categoryName" class="form-control" id="exampleInputEmail1" placeholder="请输入一级分类的名称">
+                  </div> 
+          </div>
+        
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <!-- 表单校验要求按钮必须是submit -->
+            <button type="submit" class="btn btn-primary">添加</button>
+          </div>
+        </form>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 
     <!-- 退出框 -->
     <!-- 模态框一般都是固定定位的所以一般不会吧它放进去一个盒子里面的 -->
@@ -135,6 +153,15 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
+    <!-- 准备表格渲染部分的模板 -->
+    <script type="text/html" id="tpl">
+      {{ each rows v i }}
+       <tr>
+          <td>{{ (page - 1)*size + i + 1 }}</td>
+          <td>{{ v.categoryName }}</td>
+        </tr>
+      {{/each}}
+    </script>
 
 
 
@@ -153,6 +180,10 @@
     <script src="lib/nprogress/nprogress.js"></script>
     <!--  nprogress公共代码处理文件  -->
     <script src="js/common.js"></script>
+    <!-- 引入模板引擎 -->
+    <script src="lib/artTemplate/template-web.js"></script>
+    <!-- 分页的插件 -->
+    <script src="lib/bootstrap-paginator/bootstrap-paginator.js"></script>
     <!-- fist.js -->
     <script src="js/first.js"></script>
     <!-- 引入login js -->
