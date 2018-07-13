@@ -21,7 +21,7 @@ $(function(){
               message: "用户名长度必须是3-6位"
             },
              //callback校验没有规则 默认的情况下是不会出现的
-            // 所以手动改错的错的时候就让callback显示就可以了
+            // 所以手动改错的错的时候就让callback显示就可以了 通过发送ajax请求的到的数据显示
             callback:{
               message:"用户名不存在"
             }
