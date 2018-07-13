@@ -74,11 +74,95 @@
           </ol>
           <!-- 每个页面的具体的内容 -->
           <div class="lt_content">
-            111111111111
-            111111111111
+            <!-- 点击添加分类按钮 -->
+              <button type="button" class="btn btn-default mb_20 btn_add">添加分类</button>
+             <table class="table table-bordered table-hover">
+               <thead>
+                 <tr>
+                   <th width="10%">序列号</th>
+                   <th width="30%">一级分类名称</th>
+                   <th width="30%">二级分类名称</th>
+                   <th width="30%">二级分类LOGO</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <!-- 进行动态渲染显示 -->
+               </tbody>
+             </table>
+              <!-- 分页 -->
+              <div class="pull-right">
+                  <ul id="pagintor"></ul>
+              </div> 
           </div>
       </div>
     </div>
+    
+   <!-- 分类按钮模态框 -->
+   <div class="modal fade" id="addModal">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">添加分类</h4>
+          </div>
+          <form>
+          <div class="modal-body">
+            <!-- 添加信息表单 -->
+              
+                  <div class="form-group">
+                    <!-- 下拉菜单 -->
+                      <div class="dropdown">
+                          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            <span class="dropdown-text">请选择一级分类</span>
+                            <span class="caret"></span>
+                          </button>
+                          <!-- 将获取一级id 文本框改为隐藏域将它隐藏起来 -->
+                          <input type="hidden" name="categoryId">
+                          <input type="hidden" name="hot" value="0">
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <!-- 动态的渲染 -->
+                          </ul>
+                        </div>
+                  </div>
+                  <div class="form-group">
+                    <!-- name="brandName"根据接口文档 name品牌的名字进行更改 -->
+                    <input type="text" name="brandName" class="form-control" placeholder="请输入二级分类的名称">
+                  </div>
+                 
+                  <div class="form-group">
+                    <!-- 上传图片是 -->
+                      <!-- <button class="btn btn-default" type="submit">上传图片</button> -->
+                      <!-- button也可以提交表单 和submit一样的但是有兼容性问题一般不用 因为button提交表单没有选择文件的功能所以-->
+                      <!-- button实现了样式  input实现了选择文件的功能 所以将input隐藏掉 -->
+                      <!-- 但是实际上是希望可以看到按钮的同时又可以进行文件的选择 所以将上面的button改成了label 
+                        然后给input一个id 在label里面将他的for属性值和input的id一样将他们两个关联起来 -->
+                      <!-- 上传文件 图片是一个异步的过程在点击上传图片选择的时候就将图片上传传到后台去 -->
+                      <label class="btn btn-default" for="fileupload">上传图片</label>
+                       <!-- name: 后端通过这个name属性获取到文件 参数是在接口文档里面的-->
+                       <!-- data-url: 指定图片上传的地址 参数是在接口文档里面的 name data-url插件中要求设置的-->
+                       <!-- 往哪里上传 上传的属性叫什么 -->
+                      <input type="file" name="pic1" data-url="/category/addSecondCategoryPic" id="fileupload" class="btn btn-default" style="display: none"> 
+                  </div>
+                  <div class="form-group">
+                    <div class="img_box">
+                        <img src="images/none.png" width="100px" height="100px" alt="">
+                    </div>
+                    <input type="hidden" name="brandLogo">
+                  </div>
+                
+           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-primary">添加</button>
+          </div>
+        </form>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
 
     <!-- 退出框 -->
     <!-- 模态框一般都是固定定位的所以一般不会吧它放进去一个盒子里面的 -->
@@ -110,9 +194,27 @@
     </div><!-- /.modal -->
 
 
+   <!-- 动态渲染引擎模板 -->
+   <script type="text/html" id="tpl">
+    {{each rows v i}}
+      <tr>
+        <td>{{ (page-1)*size + i+1}}</td>
+        <td>{{v.categoryName}}</td>
+        <td>{{v.brandName}}</td>
+        <td>
+          <!-- 使用三元表达式就是防止加载的过程中图片加载不出来显示的一张提示图片 -->
+          <img src="{{v.brandLogo?v.brandLogo : 'images/none.png'}}" width="70px" heigth="70px" alt="">
+        </td>
+      </tr>
+    {{/each}}
+  </script>
 
-
-
+   <script type="text/html" id="ptl2">
+      {{each rows v i}}
+      <!-- 获取当前的li的id发送给后台 categoryId所属品牌的id -->
+      <li><a href="#" data-id="{{v.id}}">{{v.categoryName}}</a></li>
+      {{/each}}
+   </script>
 
 
 
@@ -126,8 +228,18 @@
     <!-- 进度条的插件 进度条是每个页面只要是发送了ajax请求的时候的都会有的所以将进度条的js文件新建一个公共文件 之后的页面之间的引入就可以了 -->
     <script src="lib/nprogress/nprogress.js"></script>
     <!--  nprogress公共代码处理文件  -->
+    <!-- 模板 -->
+    <script src="lib/artTemplate/template-web.js"></script>
+    <!-- 分页 -->
+    <script src="lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+    <!-- 上传图片的插件 开始-->
+    <script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+    <script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
+    <!-- 上传图片的插件 结束-->
     <script src="js/common.js"></script>
+    <!-- second.js -->
+    <script src="js/second.js"></script>
     <!-- 引入login js -->
-    <script src="js/login.js"></script>
+    <!-- <script src="js/login.js"></script> -->
 </body>
 </html>
