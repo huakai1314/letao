@@ -37,7 +37,10 @@ $(function(){
 
     //3.给表单注册校验成功的事件 阻止默认的行为 改用ajax提交
     $('form').on('success.form.bv',function(e){
+        //阻止默认事件
         e.preventDefault();
+        //console.log("发送ajax请求了");
+        // 发送ajax请求
         $.ajax({
             type:"post",
             url:"/category/addTopCategory",
@@ -45,7 +48,7 @@ $(function(){
             success:function(info){
                 // console.log(info);
                 if(info.success){
-                    //渲染页面  隐藏模态框
+                //渲染页面  隐藏模态框
                 // 添加成功的时候渲染回到第一页上去
                 page = 1;
                 render();

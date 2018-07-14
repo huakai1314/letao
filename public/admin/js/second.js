@@ -14,32 +14,35 @@ $(function(){
     $(".btn_add").on("click",function(){
         //显示模态框
         $('#addModal').modal('show');
-        // 发送请求获取数据渲染下拉框的内容
+        //在点击的时候就发送请求获取数据渲染下拉框的内容 在之后的地方发送请求获取内容都将来不及渲染数据
         $.ajax({
             type:"get",
             url:"/category/queryTopCategoryPaging",
             data:{
                 page:1,
+                // 默认设置显示的条数
                 pageSize:100
             },
             success:function(info){
                 console.log(info);
-                //进行渲染页面
+                //进行渲染下拉框里面的内容
               $('.dropdown-menu').html( template("ptl2" , info));
             }
         })
     })
     
+    //因为不是一个下拉框所以在点击下拉的内容是不能被选中到框里面显示的处理方法如下：
     // 给所有li注册点击事件 又因为li动态渲染了 所以利用事件委托了给ul
+    // 委托给li 还是 a 给谁更方便拿到数据就给给谁 
     $(".dropdown-menu").on("click",'a',function(){
         //获取当前a的文本的内容
         //console.log($(this).text());
-        //将a的文本赋值给上面的 dropdown-text
+        //将当前a的文本显示在给上面的框里面 dropdown-text
         $('.dropdown-text').text($(this).text());
 
         // 获取自定义属性里面的id
         var id = $(this).data('id');
-        //将获取到的id 作为val值传入隐藏域里面
+        //将获取到的一级分类id 作为val值传入隐藏域里面
         $("[name = 'categoryId']").val(id);
         //表单校验的时候 手动修改categoryId的校验状态，通过
         $("form").data("bootstrapValidator").updateStatus("categoryId","VALID");
@@ -137,17 +140,19 @@ $(function(){
                 pageSize:pageSize
             },
             success:function(info){
-                console.log(info);
+                // console.log(info);
               //进行动态渲染
               $('tbody').html( template("tpl" , info));
+             //调用分页插件的方法进行 分页操作
               $('#pagintor').bootstrapPaginator({
                   //版本是多少 使用版本3
                   bootstrapMajorVersion:3,
                   //当前页数
                   currentPage:page,
-                  //totalPages 总页数
+                  //totalPages 总页数 向下取整 即使最后一页之后一条数据也作为一页显示
+                //z总条数 / 每页个数
                   totalPages: Math.ceil(info.total / info.size),
-                  //给按钮添加点击事件(分页)
+                  //给按钮添加点击事件(分页)  将页面的页面数和分页码的数据进行一一对应
                   onPageClicked:function(a,b,c,p){
                      page = p;
                      //渲染页面
